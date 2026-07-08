@@ -97,6 +97,7 @@ Some patches for dialogue fixes are marked with the "Articy ID", representing th
   from the HUD until you un-equip & re-equip it.
 - `MuzzleKimsBark`: When attempting to open the locked apartment door, Kim's "bark" voice-over clip would trigger multiple
   times, making it much louder.
+- `RemoveMainMenuAd`: Removes the ad banner for "Zero Parades" from the main menu.
 - `ScrollSensitivityTweaks`: Some scrolling text, like the Thought Cabinet description panel, has very low scrolling sensitivity.
   - The sensitivity is configurable per panel.
 - `SkipIncorrectVoiceOver`: `0x0100005800001E34`: The wrong voice-over clip plays when Cindy the Skull looks at Joyce.
