@@ -13,6 +13,11 @@ Copy-Item -Path "FuriousTareIL2CPP\bin\Release\net6.0\FuriousTareIL2CPP.dll" -De
 
 $Today = (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd')
 Compress-Archive -Path "temp\package\IL2CPP\*" -DestinationPath "temp\FuriousTareIL2CPP_$Today.zip"
+
+mkdir -Path "temp\package\PluginOnly\BepInEx\plugins\FuriousTare"
+Copy-Item -Path "FuriousTareIL2CPP\bin\Release\net6.0\FuriousTareIL2CPP.dll" -Destination "temp\package\PluginOnly\BepInEx\plugins\FuriousTare"
+Compress-Archive -Path "temp\package\PluginOnly\*" -DestinationPath "temp\FuriousTareIL2CPP_PluginOnly_$Today.zip"
+
 Remove-Item -Force -Recurse -ErrorAction "Continue" -Path "temp/package"
 
 echo "Done!"
