@@ -91,6 +91,9 @@ Some patches for dialogue fixes are marked with the "Articy ID", representing th
   the correct response, _and also_ the response for the other dialogue choice ("I like high fidelity *anything*").
 - `DisableCollageMode`: Collage mode adds 2 to 6 seconds loading time at game startup. We can disable it for a speed boost.
   (Just disable this specific patch if you want to use Collage mode.)
+- `FranconigerianCavalryBoots`: The Franconigerian Cavalry Boots are supposed to count towards the Royalist reenactor
+  dress code, but the dress code condition checks for an item ID that doesn't exist (`boots_cavalry` instead of the
+  boots' real ID, `shoes_cavalry`). Checks for non-existent ID are remapped to the real one.
 - `HandHud`: The hand HUD icons wouldn't respond to mouseover or clicks, except for a small area below the icons.
   - This was because the clock's "rectangle" actually overlapped and blocked the icons.
 - `HandHudReplaceHeldItem`: When swapping a held consumable item (booze, smokes) with another, the new item would not be usable

@@ -13,6 +13,7 @@ public class PluginEntryPoint
         typeof(AbilityLabelOverflow),
         typeof(DisableCollageMode),
         typeof(DialoguePathFixes),
+        typeof(FranconigerianCavalryBoots),
         typeof(HandHud),
         typeof(HandHudReplaceHeldItem),
         typeof(MuzzleKimsBark),
