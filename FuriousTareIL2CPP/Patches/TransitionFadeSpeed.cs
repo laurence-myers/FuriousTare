@@ -18,11 +18,15 @@ public class TransitionFadeSpeed
 
     public static void LoadConfig(ConfigFile configFile)
     {
+        // A speed of 0 would pause the tween, and transitions would wait forever for it to finish
         _multiplier = configFile.Bind(
             ConfigSections.TransitionTweaks,
             "FadeSpeedMultiplier",
             _multiplier,
-            "Loading screen fade speed multiplier. Original value: 1"
+            new ConfigDescription(
+                "Loading screen fade speed multiplier. Original value: 1",
+                new AcceptableValueRange<float>(0.1f, 10f)
+            )
         ).Value;
     }
 

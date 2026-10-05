@@ -26,7 +26,10 @@ public class TransitionTextureWarmupBudget
             ConfigSections.TransitionTweaks,
             "TextureWarmupSeconds",
             _seconds,
-            $"Maximum time to spend streaming textures when entering an area. Original value: {OriginalSeconds}"
+            new ConfigDescription(
+                $"Maximum time to spend streaming textures when entering an area. Original value: {OriginalSeconds}",
+                new AcceptableValueRange<float>(0f, 5f)
+            )
         ).Value;
     }
 

@@ -214,6 +214,7 @@ FadeSpeed = true
 ## Loading screen fade speed multiplier. Original value: 1
 # Setting type: Single
 # Default value: 2
+# Acceptable value range: From 0.1 to 10
 FadeSpeedMultiplier = 2
 
 ## Show the characters and objects in view before the loading screen fades out, instead of over the following frames
@@ -239,6 +240,7 @@ TextureWarmupBudget = true
 ## Maximum time to spend streaming textures when entering an area. Original value: 0.5
 # Setting type: Single
 # Default value: 0.1
+# Acceptable value range: From 0 to 5
 TextureWarmupSeconds = 0.1
 ```
 
