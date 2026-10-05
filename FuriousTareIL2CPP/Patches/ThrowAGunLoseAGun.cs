@@ -9,7 +9,7 @@ namespace FuriousTareIL2CPP.Patches;
 )]
 public class ThrowAGunLoseAGun
 {
-    
+
     // Original code would incorrectly throw ruby's gun if you had the Villiers gun
     public static void Prefix(ref bool __runOriginal)
     {

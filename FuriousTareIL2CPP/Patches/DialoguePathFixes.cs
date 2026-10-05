@@ -21,7 +21,7 @@ public class DialoguePathFixes
             );
         }
     }
-    
+
     private static void ReplaceDestination(DialogueEntry entry, int original, int replacement)
     {
         foreach (var link in entry.outgoingLinks)
