@@ -12,6 +12,7 @@
 - Extract BepInEx into the game directory (e.g. in `Steam\steamapps\common\Disco Elysium`)
 - Run the game once. You should see the BepInEx console.
 - From the directory `Disco Elysium\BepInEx\interop`, copy these files:
+  - `AmplifyTexture.dll`
   - `Assembly-CSharp.dll`
   - `DialogueSystem.dll`
   - `IL2Cppmscorlib.dll`
