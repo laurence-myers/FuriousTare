@@ -18,6 +18,7 @@ public class PluginEntryPoint
         typeof(FranconigerianCavalryBoots),
         typeof(HandHud),
         typeof(HandHudReplaceHeldItem),
+        typeof(HudSlideIn),
         typeof(MuzzleKimsBark),
         typeof(RemapVoiceOvers), // should apply after VoiceOverFixAlternatives by using low priority
         typeof(RemoveMainMenuAd),
