@@ -95,6 +95,9 @@ Some patches for dialogue fixes are marked with the "Articy ID", representing th
   - This was because the clock's "rectangle" actually overlapped and blocked the icons.
 - `HandHudReplaceHeldItem`: When swapping a held consumable item (booze, smokes) with another, the new item would not be usable
   from the HUD until you un-equip & re-equip it.
+- `HudSlideIn`: When the HUD is shown (e.g. after a loading screen), the background "tape" behind the bottom-right
+  buttons is supposed to slide up into place. Instead, it would pop in a moment after the buttons. The animation was
+  only missing from the animator for non-ultrawide screens.
 - `MuzzleKimsBark`: When attempting to open the locked apartment door, Kim's "bark" voice-over clip would trigger multiple
   times, making it much louder.
 - `ScrollSensitivityTweaks`: Some scrolling text, like the Thought Cabinet description panel, has very low scrolling sensitivity.
