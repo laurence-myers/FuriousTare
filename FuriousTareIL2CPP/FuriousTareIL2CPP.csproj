@@ -20,6 +20,9 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Reference Include="AmplifyTexture">
+            <HintPath>lib\AmplifyTexture.dll</HintPath>
+        </Reference>
         <Reference Include="Assembly-CSharp">
             <HintPath>lib\Assembly-CSharp.dll</HintPath>
         </Reference>

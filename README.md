@@ -118,3 +118,111 @@ Some patches for dialogue fixes are marked with the "Articy ID", representing th
   - `0x010000580001C11B`: "Talking" to the hanging corpse, comparing it to a harlequin, and ending the "chat", the text
     reads "Humour yourself with my harlequin features," but the voice-over is "Amuse yourself with my frank manners
     and my *memento mori* features."
+
+### Faster startup
+
+These patches are in the `StartupTweaks` config section. Set `Enabled = false` to disable all of them.
+
+- `LoadingPriority`: During startup, Unity only spent ~4 ms per frame on loading, and frames were capped by vsync.
+  Until the main menu is ready, the loading priority is raised to High, and vsync is turned off.
+- `SkipShaderWarmup`: When entering the main menu, every variant of every shader was compiled (~18000 variants, 5 - 25
+  seconds). Shaders are now compiled the first time they are drawn, and only the variants that are actually used.
+- `SkipSplashMinimum`: The first loading screen always lasted at least 5 seconds, even though its work takes ~0.5
+  seconds.
+
+```toml
+[StartupTweaks]
+
+## Also turn off vsync and the frame rate cap while the game starts up
+# Setting type: Boolean
+# Default value: true
+DisableVSyncWhileLoading = true
+
+## Speed up the game startup. Set to false to disable every patch in this section
+# Setting type: Boolean
+# Default value: true
+Enabled = true
+
+## Raise Unity's loading priority (and optionally turn off vsync) until the main menu is ready
+# Setting type: Boolean
+# Default value: true
+LoadingPriority = true
+
+## Skip warming up every shader when entering the main menu. Shaders are compiled when first drawn instead
+# Setting type: Boolean
+# Default value: true
+SkipShaderWarmup = true
+
+## Skip the 5 second minimum duration of the first loading screen
+# Setting type: Boolean
+# Default value: true
+SkipSplashMinimum = true
+```
+
+### Faster area transitions
+
+These patches are in the `TransitionTweaks` config section. Set `Enabled = false` to disable all of them.
+
+- `FadeSpeed`: The loading screen fades in and out faster. Configurable with `FadeSpeedMultiplier`.
+- `SkipGC`: Every area transition ended with a forced garbage collection (0.3 - 0.4 seconds), right after the loading
+  screen faded out. This is skipped; the garbage collector still runs by itself when needed.
+- `ShowVisibleEntities`: After an area change, the game shows the characters and objects in view over dozens of frames
+  (10 - 30 per frame). With faster transitions, characters would pop in after the loading screen faded out. A full
+  pass is now done before the fade-out, and another one frame later, once the camera has settled.
+- `SkipShaderWarmup`: Every area transition re-ran a full shader warmup (0.2 - 1 seconds, plus more work in the next
+  frames), even though the shaders were already warmed up (or compiled when first drawn).
+- `TextureWarmupBudget`: Every area transition spent up to 0.5 seconds streaming textures, blocking the game. The budget
+  is reduced to 0.1 seconds; textures keep streaming in while the loading screen fades out. Configurable with
+  `TextureWarmupSeconds`.
+
+```toml
+[TransitionTweaks]
+
+## Speed up area transitions, e.g. when walking through a door. Set to false to disable every patch in this section
+# Setting type: Boolean
+# Default value: true
+Enabled = true
+
+## Fade the loading screen in and out faster. See FadeSpeedMultiplier
+# Setting type: Boolean
+# Default value: true
+FadeSpeed = true
+
+## Loading screen fade speed multiplier. Original value: 1
+# Setting type: Single
+# Default value: 2
+FadeSpeedMultiplier = 2
+
+## Show the characters and objects in view before the loading screen fades out, instead of over the following frames
+# Setting type: Boolean
+# Default value: true
+ShowVisibleEntities = true
+
+## Skip the forced garbage collection at the end of each area transition
+# Setting type: Boolean
+# Default value: true
+SkipGC = true
+
+## Skip warming up every shader again on each area transition
+# Setting type: Boolean
+# Default value: true
+SkipShaderWarmup = true
+
+## Spend less time streaming textures while the loading screen is shown. See TextureWarmupSeconds
+# Setting type: Boolean
+# Default value: true
+TextureWarmupBudget = true
+
+## Maximum time to spend streaming textures when entering an area. Original value: 0.5
+# Setting type: Single
+# Default value: 0.1
+TextureWarmupSeconds = 0.1
+```
+
+### Diagnostics
+
+These patches don't change the game. They are in the `Diagnostics` config section, and disabled by default. They write
+to the BepInEx console and `BepInEx\LogOutput.log`.
+
+- `StartupTimings`: Logs a timeline of where the time goes between launching the game and reaching the main menu.
+- `TransitionTimings`: Logs a timeline of where the time goes when changing area, e.g. when walking through a door.
