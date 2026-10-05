@@ -22,9 +22,8 @@ namespace FuriousTareIL2CPP.Patches;
  */
 public class TransitionShowVisibleEntities
 {
-    // ProcessBasicEntityRegistry stops a pass early when it removes a destroyed entity from the registry, so we run a
-    // few passes. Each pass only does a visibility test per entity.
-    private const int Passes = 3;
+    // Each pass only does a visibility test per entity, but a pass can stop early (see RunFullPass), so cap the retries
+    private const int MaxPasses = 100;
 
     private static NPCUnloader _npcUnloader;
     private static Il2CppSystem.Object _loadingScreenLock;
@@ -114,8 +113,14 @@ public class TransitionShowVisibleEntities
                 mainCamera.transform.hasChanged = true;
             }
 
-            RunPasses(_npcUnloader.ProcessCharacterScheduleRegistry(true));
-            RunPasses(_npcUnloader.ProcessBasicEntityRegistry(true));
+            RunFullPass(
+                _npcUnloader.ProcessCharacterScheduleRegistry(true),
+                () => NPCUnloader.characterScheduleRegistry.Count
+            );
+            RunFullPass(
+                _npcUnloader.ProcessBasicEntityRegistry(true),
+                () => NPCUnloader.basicEntityRegistry.Count
+            );
         }
         catch (Exception e)
         {
@@ -125,14 +130,29 @@ public class TransitionShowVisibleEntities
         }
     }
 
-    private static void RunPasses(Il2CppSystem.Collections.IEnumerator coroutine)
+    /**
+     * The coroutine is an endless loop that starts with "yield return null". The first MoveNext() stops there, and
+     * every following MoveNext() does a pass over the registry, then stops at the start of the next loop.
+     *
+     * A pass stops early when the registry changes size: ProcessBasicEntityRegistry removes one destroyed entity per
+     * pass, then stops. So we repeat until a pass leaves the registry size unchanged, meaning it went through every
+     * entry.
+     */
+    private static void RunFullPass(Il2CppSystem.Collections.IEnumerator coroutine, Func<int> getRegistryCount)
     {
-        // The coroutine is an endless loop that starts with "yield return null". The first MoveNext() stops there,
-        // and every following MoveNext() does a full pass, then stops at the start of the next loop.
         coroutine.MoveNext();
-        for (var i = 0; i < Passes; i++)
+        for (var i = 0; i < MaxPasses; i++)
         {
+            var countBefore = getRegistryCount();
             coroutine.MoveNext();
+            if (getRegistryCount() == countBefore)
+            {
+                return;
+            }
         }
+
+        Logger.Log.LogWarning(
+            $"Visible entities pass did not complete after {MaxPasses} attempts"
+        );
     }
 }
