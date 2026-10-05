@@ -1,0 +1,37 @@
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  editorconfig:
+    name: EditorConfig
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: editorconfig-checker/action-editorconfig-checker@main
+        with:
+          version: v4.0.1
+
+      - name: Check encoding, final newlines and trailing whitespace
+        run: editorconfig-checker -format github-actions
+
+  dotnet-format:
+    name: dotnet format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      # --folder formats without loading the project, so the game's interop assemblies aren't needed
+      - name: Check C# formatting
+        run: dotnet format whitespace --folder --verify-no-changes --exclude FuriousTareIL2CPP/obj FuriousTareIL2CPP/bin

@@ -29,7 +29,7 @@ public class PluginEntryPoint
     };
 
     private readonly Dictionary<Type, bool> _enabledPatches = new Dictionary<Type, bool>();
-    
+
     private void LoadConfig(ConfigFile configFile)
     {
         foreach (var patch in Patches)
@@ -44,11 +44,11 @@ public class PluginEntryPoint
 
         ScrollSensitivityTweaks.LoadConfig(configFile);
     }
-    
+
     public PluginEntryPoint(ConfigFile configFile, string pluginName, string pluginGuid)
     {
         LoadConfig(configFile);
-        
+
         var harmony = new Harmony(
             pluginGuid
         );
@@ -56,7 +56,7 @@ public class PluginEntryPoint
         // DebugTypeLogger.RegisterPatches(typeof(HudHeldButton));
         // DebugTypeLogger.RegisterPatches(typeof(HudHeldPanelController));
         // DebugTypeLogger.RegisterPatches(typeof(InventoryViewData));
-        
+
         foreach (var patch in Patches)
         {
             if (_enabledPatches[patch])

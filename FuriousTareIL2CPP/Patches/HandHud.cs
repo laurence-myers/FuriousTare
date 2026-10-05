@@ -29,7 +29,7 @@ public class HandHud
             component.sizeDelta.x,
             41
         );
-        
+
         Logger.Log.LogInfo("Fixed hand HUD by shrinking the clock");
     }
 }

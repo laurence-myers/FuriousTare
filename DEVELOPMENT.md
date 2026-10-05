@@ -7,7 +7,7 @@
   - https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-6.0.428-windows-x64-installer
   - This version was required to generate the plugin from a template, but perhaps a different version will work for you.
 - Download BepInEx v6 (4901521, build date 2024-02-10T05:53:59), for IL2CPP, Windows, x64
-  - https://builds.bepinex.dev/projects/bepinex_be 
+  - https://builds.bepinex.dev/projects/bepinex_be
   - https://builds.bepinex.dev/projects/bepinex_be/688/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.688%2B4901521.zip
 - Extract BepInEx into the game directory (e.g. in `Steam\steamapps\common\Disco Elysium`)
 - Run the game once. You should see the BepInEx console.
@@ -26,6 +26,15 @@
 - Copy the built DLL from `bin\Debug\net6.0\FuriousTareIL2CPP.dll"`.
 - Paste the built DLL into `Disco Elysium\BepInEx\plugins\FuriousTareIL2CPP`
 - Run the game and test your changes!
+
+## Formatting
+
+File encoding, final newlines and whitespace are set in `.editorconfig`, which Rider and Visual Studio follow
+automatically. Pull requests are checked by the "Lint" GitHub workflow.
+
+To check C# files locally: `dotnet format whitespace --folder --verify-no-changes --exclude FuriousTareIL2CPP/obj FuriousTareIL2CPP/bin`
+
+To fix them, run the same command without `--verify-no-changes`.
 
 ## Packaging a release
 
