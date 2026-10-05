@@ -15,6 +15,7 @@ public class PluginEntryPoint
         typeof(DialoguePathFixes),
         typeof(HandHud),
         typeof(HandHudReplaceHeldItem),
+        typeof(HudSlideIn),
         typeof(MuzzleKimsBark),
         typeof(RemapVoiceOvers), // should apply after VoiceOverFixAlternatives by using low priority
         typeof(TweakHudWhiteSpace),
