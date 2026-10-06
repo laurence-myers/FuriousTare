@@ -101,7 +101,7 @@ Some patches for dialogue fixes are marked with the "Articy ID", representing th
   - The sensitivity is configurable per panel.
 - `SkipIncorrectVoiceOver`: `0x0100005800001E34`: The wrong voice-over clip plays when Cindy the Skull looks at Joyce.
   - This is a data problem - the voice-over clips for this dialogue entry were, perhaps, not recorded or imported into
-    the game - and the correct clips do not exist in the game files. For now, we just skip playing the voice-over. 
+    the game - and the correct clips do not exist in the game files. For now, we just skip playing the voice-over.
 - `StopWavingThatFlashlight`: When entering a conversation while holding a flashlight, the flashlight is supposed to stay still, but you could still
   wave it around.
 - `TakeASwig`: Consuming a held substance sometimes doesn't play an animation when you're standing still, but does when
