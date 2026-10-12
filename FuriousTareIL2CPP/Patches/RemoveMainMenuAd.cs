@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 
 namespace FuriousTareIL2CPP.Patches;
 
@@ -7,7 +7,6 @@ namespace FuriousTareIL2CPP.Patches;
  *
  * This hides it by deactivating the ad button's GameObject as soon as it wakes up and prevents anything else from re-enabling it.
  */
-
 [HarmonyPatch(typeof(MainMenuAdButton))]
 public class RemoveMainMenuAd
 {

@@ -1,10 +1,13 @@
 ﻿# Unofficial Patch for Disco Elysium
 
-This mod fixes some outstanding bugs in Disco Elysium - The Final Cut. Initially developed for v2024-04-23 and somewhat
-tested up to v2026-01-05.
+This mod fixes some outstanding bugs in Disco Elysium - The Final Cut.
 
-The mod has been tested on the GOG and Steam releases for Windows. Older versions of the game are not officially
-supported (Steam might work, GOG will not, due to the game files being built in a different way).
+The mod requires the latest version of the game, on the GOG or Steam releases for Windows:
+
+- Steam: v2026-06-30 (build ID 23980936)
+- GOG: v2026-06-16
+
+Older versions of the game are not supported.
 
 ## How to install
 
@@ -22,10 +25,12 @@ If you already installed BepInEx or other mods, prefer Option B so your existing
 
 - Install BepInEx 6 (IL2CPP, Windows x64) into your game directory, following the [BepInEx installation guide](https://docs.bepinex.dev/master/articles/user_guide/installation/index.html).
   - The mod is developed and tested against [v6.0.0-be.688](https://builds.bepinex.dev/projects/bepinex_be/688/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.688%2B4901521.zip).
-
 - Run the game once, so BepInEx generates its interop assemblies.
 - Download "FuriousTareIL2CPP_PluginOnly.zip" from the "Releases" page.
 - Unzip it into your game directory. The plugin DLL should end up at `Disco Elysium\BepInEx\plugins\FuriousTare\FuriousTareIL2CPP.dll`.
+
+Unlike Option A, this uses BepInEx's default settings, so a console window opens alongside the game. To turn it off,
+set `Enabled = false` under `[Logging.Console]` in `Disco Elysium\BepInEx\config\BepInEx.cfg`.
 
 ## Configuration
 

@@ -2,7 +2,7 @@
 
 ## Steam or GOG
 
-- Install Disco Elysium, version `2024-04-23` or later.
+- Install the latest version of Disco Elysium. The supported versions are listed in `README.md`.
 - Install .NET SDK v6
   - https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-6.0.428-windows-x64-installer
   - This version was required to generate the plugin from a template, but perhaps a different version will work for you.

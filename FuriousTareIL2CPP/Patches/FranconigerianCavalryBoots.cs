@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using Sunshine.Dialogue;
 
 namespace FuriousTareIL2CPP.Patches;
@@ -8,7 +8,6 @@ namespace FuriousTareIL2CPP.Patches;
  *
  * No item with ID "boots_cavalry" exists in game, so any check for it always fails. This remaps checks for the wrong ID to the real item ID.
  */
-
 [HarmonyPatch(typeof(InventoryLuaFunctions))]
 public class FranconigerianCavalryBoots
 {
