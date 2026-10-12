@@ -8,10 +8,24 @@ supported (Steam might work, GOG will not, due to the game files being built in 
 
 ## How to install
 
+### Option A: bundled (easiest)
+
 - Download the zip for your version from the "Releases" page.
   - For GOG or Steam, download "FuriousTareIL2CPP.zip"
 - Unzip the files into your game directory
   - E.g. `Steam\steamapps\common\Disco Elysium`
+
+This zip bundles the BepInEx mod loader (v6.0.0-be.688, IL2CPP, Windows x64), pre-configured.
+If you already installed BepInEx or other mods, prefer Option B so your existing setup isn't overwritten.
+
+### Option B: plugin only (bring your own BepInEx)
+
+- Install BepInEx 6 (IL2CPP, Windows x64) into your game directory, following the [BepInEx installation guide](https://docs.bepinex.dev/master/articles/user_guide/installation/index.html).
+  - The mod is developed and tested against [v6.0.0-be.688](https://builds.bepinex.dev/projects/bepinex_be/688/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.688%2B4901521.zip).
+
+- Run the game once, so BepInEx generates its interop assemblies.
+- Download "FuriousTareIL2CPP_PluginOnly.zip" from the "Releases" page.
+- Unzip it into your game directory. The plugin DLL should end up at `Disco Elysium\BepInEx\plugins\FuriousTare\FuriousTareIL2CPP.dll`.
 
 ## Configuration
 
