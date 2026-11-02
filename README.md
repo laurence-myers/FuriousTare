@@ -125,6 +125,12 @@ Some patches for dialogue fixes are marked with the "Articy ID", representing th
 - `RemoveMainMenuAd`: Removes the ad banner for "Zero Parades" from the main menu.
 - `ScrollSensitivityTweaks`: Some scrolling text, like the Thought Cabinet description panel, has very low scrolling sensitivity.
   - The sensitivity is configurable per panel.
+- `SeeYouInTheMorning`: Kim could disappear when you entered the tent or the shack in the fishing village. This happened
+  if you left the Whirling's upper floor while Kim was walking to his room for the night. His "goodnight" cutscene
+  stopped without cleaning up, then started again when he rejoined you the next morning ("See you in the morning."
+  "Bye."). From then on, the game treated Kim as away until morning, even while he walked with you, so he didn't come
+  back out after you left him outside a door.
+  - Saves already affected are repaired when you load them.
 - `SkipIncorrectVoiceOver`: `0x0100005800001E34`: The wrong voice-over clip plays when Cindy the Skull looks at Joyce.
   - This is a data problem - the voice-over clips for this dialogue entry were, perhaps, not recorded or imported into
     the game - and the correct clips do not exist in the game files. For now, we just skip playing the voice-over.

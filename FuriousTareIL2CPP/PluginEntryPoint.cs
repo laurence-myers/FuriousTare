@@ -22,6 +22,7 @@ public class PluginEntryPoint
         typeof(MuzzleKimsBark),
         typeof(RemapVoiceOvers), // should apply after VoiceOverFixAlternatives by using low priority
         typeof(RemoveMainMenuAd),
+        typeof(SeeYouInTheMorning),
         typeof(TweakHudWhiteSpace),
         typeof(SkipIncorrectVoiceOver),
         typeof(StopWavingThatFlashlight),
